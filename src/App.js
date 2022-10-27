@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import Form from './components/form'
+import TodoList from './components/todoList'
+import './App.css'
 
-function App() {
+const App = () => {
+  const [todoList, setTodoList] = useState([
+    {
+      task: 'Task 1',
+      status: 'open'
+    },
+    {
+      task: 'Task 2',
+      status: 'open'
+    }
+  ])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>ToDo App</h1>
+      <Form setTodoList={ setTodoList } todoList={ todoList } />
+      <TodoList todoList={ todoList } />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
